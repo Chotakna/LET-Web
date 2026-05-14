@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L.E.T - Learn English Together</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0b1638;
+      --navy-deep: #060d24;
+      --blue: #1a3acf;
+      --blue-soft: #5b7be8;
+      --yellow: #ffe999;
+      --white: #ffffff;
+      --text-soft: #dce5ff;
+      --panel: rgba(255, 255, 255, 0.1);
+      --panel-border: rgba(255, 255, 255, 0.16);
+      --about-bg: #f4f7ff;
+      --about-text: #506080;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Nunito", sans-serif;
+      background: var(--navy-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    .khmer-text {
+      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+    }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top center, rgba(26, 58, 130, 0.35) 0%, rgba(26, 58, 130, 0.12) 22%, transparent 42%),
+        linear-gradient(180deg, #14296d 0%, #091433 42%, #050d24 100%);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .about-section {
+      position: relative;
+      padding: 40px 24px 90px;
+    }
+
+    .courses-section {
+      padding: 0 24px 90px;
+    }
+
+    .courses-heading {
+      width: min(100%, 1480px);
+      margin: 0 auto 24px;
+      text-align: center;
+      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .courses-wrap {
+      width: min(100%, 1480px);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 28px;
+    }
+
+    .card {
+      flex: 1 1 420px;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 34px;
+      padding: 42px 34px 36px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .card-icon-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 2.6rem;
+      color: #091433;
+    }
+
+    .card-1 .card-icon-wrap {
+      background: #e9efff;
+    }
+
+    .card-2 .card-icon-wrap {
+      background: #e9efff;
+    }
+
+    .card-level {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .card-1 .card-level {
+      background: #dfe8ff;
+      color: #2f57d8;
+    }
+
+    .card-2 .card-level {
+      background: #dfe8ff;
+      color: #2f57d8;
+    }
+
+    .card h3 {
+      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      line-height: 1.45;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      color: #7484ab;
+      font-size: 1.08rem;
+      line-height: 1.95;
+      margin-bottom: 28px;
+      max-width: 390px;
+      flex-grow: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 300px;
+      min-height: 64px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: auto;
+      box-shadow: 0 18px 36px rgba(26, 58, 207, 0.18);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 40px rgba(26, 58, 207, 0.24);
+    }
+
+    .btn-blue {
+      background: linear-gradient(135deg, #14296d, #091433);
+      color: var(--white);
+    }
+
+    .btn-yellow {
+      background: linear-gradient(135deg, #14296d, #091433);
+      color: var(--white);
+      box-shadow: 0 18px 36px rgba(9, 20, 51, 0.28);
+    }
+
+    .about-card {
+      width: min(100%, 1480px);
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--navy);
+      border-radius: 40px;
+      padding: 26px 34px 40px;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .about-card::before,
+    .about-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .about-card::before {
+      width: 340px;
+      height: 340px;
+      right: -120px;
+      bottom: -120px;
+      background: radial-gradient(circle, rgba(26, 58, 207, 0.12), transparent 68%);
+    }
+
+    .about-card::after {
+      width: 220px;
+      height: 220px;
+      left: -90px;
+      top: 120px;
+      background: radial-gradient(circle, rgba(255, 233, 153, 0.2), transparent 68%);
+    }
+
+    .about-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .about-brand img {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(11, 22, 56, 0.12);
+    }
+
+    .about-brand-text strong {
+      display: block;
+      font-family: "Baloo 2", cursive;
+      font-size: 1.3rem;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+
+    .about-brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.92rem;
+      color: #63739b;
+      font-weight: 700;
+    }
+
+    .about-nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      color: #30405f;
+      font-weight: 800;
+    }
+
+    .about-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .about-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .about-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .about-btn-light {
+      background: #f4f7ff;
+      color: var(--navy);
+    }
+
+    .about-btn-dark {
+      background: linear-gradient(135deg, #1a3acf, #0b1638);
+      color: var(--white);
+      box-shadow: 0 12px 24px rgba(26, 58, 207, 0.2);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      align-items: center;
+      gap: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-khmer-title {
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
+      line-height: 1.25;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+
+    .about-khmer-meta {
+      color: #35508e;
+      line-height: 2;
+      font-size: 1.3rem;
+      margin-bottom: 22px;
+      max-width: 640px;
+      font-weight: 700;
+    }
+
+    .about-khmer-body {
+      color: #4d5c79;
+      line-height: 2.1;
+      font-size: 1.26rem;
+      max-width: 680px;
+      background: linear-gradient(180deg, #f7f9ff 0%, #eef3ff 100%);
+      border: 1px solid #d9e3ff;
+      border-radius: 24px;
+      padding: 28px 28px 26px;
+      box-shadow: 0 14px 28px rgba(26, 58, 207, 0.08);
+    }
+
+    .about-visual {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(26, 58, 207, 0.12);
+    }
+
+    .ring-1 {
+      width: 390px;
+      height: 390px;
+    }
+
+    .ring-2 {
+      width: 455px;
+      height: 455px;
+    }
+
+    .ring-3 {
+      width: 520px;
+      height: 520px;
+    }
+
+    .about-photo {
+      width: min(100%, 360px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #eef3ff 0%, #dce6ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 1px rgba(26, 58, 207, 0.08);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-photo img {
+      width: 76%;
+      height: 76%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .dot-grid {
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(4, 10px);
+      gap: 9px;
+    }
+
+    .dot-grid span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(26, 58, 207, 0.42);
+    }
+
+    .dot-grid.top-left {
+      top: 70px;
+      left: 30px;
+    }
+
+    .dot-grid.middle-right {
+      right: 34px;
+      top: 160px;
+    }
+
+    .mini-badge {
+      position: absolute;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: 0 12px 24px rgba(11, 22, 56, 0.12);
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+
+    .mini-badge img {
+      width: 82%;
+      height: 82%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .mini-badge.top {
+      top: 28px;
+      left: 78px;
+    }
+
+    .mini-badge.bottom {
+      bottom: 34px;
+      left: 48px;
+    }
+
+    footer {
+      text-align: center;
+      width: min(100% - 48px, 1480px);
+      margin: 0 auto;
+      padding: 26px 24px 42px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.68);
+      background: transparent;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .about-copy {
+        order: 1;
+      }
+
+      .about-visual {
+        order: 2;
+        min-height: 320px;
+      }
+
+      .about-photo {
+        width: min(100%, 250px);
+      }
+
+      .ring-1 {
+        width: 250px;
+        height: 250px;
+      }
+
+      .ring-2 {
+        width: 310px;
+        height: 310px;
+      }
+
+      .ring-3 {
+        width: 370px;
+        height: 370px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        background:
+          radial-gradient(circle at top center, rgba(26, 58, 130, 0.28) 0%, rgba(26, 58, 130, 0.08) 20%, transparent 38%),
+          linear-gradient(180deg, #14296d 0%, #091433 38%, #050d24 100%);
+      }
+
+      .about-section {
+        padding: 18px 14px 46px;
+      }
+
+      .courses-section {
+        padding: 0 14px 50px;
+      }
+
+      .courses-heading {
+        margin-bottom: 16px;
+        font-size: 1.35rem;
+      }
+
+      .about-card {
+        padding: 18px 16px 24px;
+        border-radius: 24px;
+      }
+
+      .about-topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .about-brand {
+        gap: 12px;
+      }
+
+      .about-brand img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .about-brand-text strong {
+        font-size: 1.15rem;
+      }
+
+      .about-brand-text span {
+        font-size: 0.84rem;
+      }
+
+      .about-actions {
+        width: 100%;
+      }
+
+      .about-btn {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+        border-radius: 12px;
+      }
+
+      .about-khmer-title {
+        font-size: clamp(1.65rem, 7vw, 2.25rem);
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+
+      .about-khmer-meta {
+        font-size: 1rem;
+        line-height: 1.85;
+        margin-bottom: 14px;
+      }
+
+      .about-khmer-body {
+        font-size: 0.98rem;
+        line-height: 1.95;
+        padding: 18px 16px;
+        border-radius: 18px;
+      }
+
+      .about-visual {
+        min-height: 250px;
+        margin-top: 6px;
+      }
+
+      .about-photo {
+        width: min(100%, 190px);
+      }
+
+      .ring-1 {
+        width: 200px;
+        height: 200px;
+      }
+
+      .ring-2 {
+        width: 245px;
+        height: 245px;
+      }
+
+      .ring-3 {
+        width: 290px;
+        height: 290px;
+      }
+
+      .dot-grid {
+        grid-template-columns: repeat(4, 8px);
+        gap: 7px;
+      }
+
+      .dot-grid span {
+        width: 4px;
+        height: 4px;
+      }
+
+      .dot-grid.top-left {
+        top: 32px;
+        left: 8px;
+      }
+
+      .dot-grid.middle-right {
+        right: 10px;
+        top: 110px;
+      }
+
+      .mini-badge {
+        width: 42px;
+        height: 42px;
+      }
+
+      .mini-badge.top {
+        top: 24px;
+        left: 14px;
+      }
+
+      .mini-badge.bottom {
+        bottom: 18px;
+        left: 10px;
+      }
+
+      .courses-wrap {
+        gap: 18px;
+        flex-wrap: nowrap;
+        align-items: stretch;
+      }
+
+      .card {
+        flex: 1 1 0;
+        max-width: none;
+        min-width: 0;
+        padding: 22px 12px 18px;
+        border-radius: 24px;
+      }
+
+      .card-icon-wrap {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 14px;
+        font-size: 1.55rem;
+      }
+
+      .card-level {
+        min-height: 32px;
+        padding: 6px 10px;
+        margin-bottom: 14px;
+        font-size: 0.76rem;
+      }
+
+      .card h3 {
+        font-size: 1.02rem;
+        line-height: 1.45;
+        margin-bottom: 12px;
+      }
+
+      .card p {
+        font-size: 0.78rem;
+        line-height: 1.75;
+        margin-bottom: 16px;
+        max-width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 10px 10px;
+        font-size: 0.82rem;
+      }
+
+      footer {
+        width: calc(100% - 28px);
+        padding: 18px 10px 28px;
+        font-size: 0.86rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-visual {
+        display: none;
+      }
+
+      .about-khmer-title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+      }
+
+      .about-khmer-meta {
+        font-size: 0.95rem;
+        line-height: 1.8;
+      }
+
+      .about-khmer-body {
+        font-size: 0.92rem;
+        line-height: 1.9;
+        padding: 16px 14px;
+      }
+      .card {
+        padding: 20px 10px 16px;
+      }
+
+      .card-icon-wrap {
+        width: 54px;
+        height: 54px;
+        font-size: 1.3rem;
+      }
+
+      .card-level {
+        font-size: 0.68rem;
+        padding: 5px 8px;
+      }
+
+      .card h3 {
+        font-size: 0.92rem;
+      }
+
+      .card p {
+        font-size: 0.72rem;
+      }
+
+      .btn {
+        min-height: 40px;
+        font-size: 0.74rem;
+      }
+
+      .courses-heading {
+        font-size: 1.12rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <div class="about-topbar">
+          <div class="about-brand">
+            <img src="Logo.jpg" alt="L.E.T logo" />
+            <div class="about-brand-text">
+              <strong>L.E.T</strong>
+              <span>Learn English Together</span>
+            </div>
+          </div>
+
+          <div class="about-actions">
+            <a class="about-btn about-btn-light" href="#about">About Us</a>
+          </div>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-copy khmer-text">
+            <h2 class="about-khmer-title">អំពីពួកយើង</h2>
+            <p class="about-khmer-meta">បើកពីឆ្នាំ 2024 - បច្ចុប្បន្ន និងបានធ្វើការជាមួយសិស្សសរុបជាង 500 នាក់  ។</p>
+            <div class="about-khmer-body">
+              យើងកំពុងជួយសិស្សក្នុងការអភិវឌ្ឍន៍ភាសាអង់គ្លេសរបស់ពួកគេក្នុងការនិយាយ , វេយ្យាករណ៍ និង ការបង្កើតប្រយោគ។ លើសពីនេះ យើងផ្តល់ទំនុកចិត្ត និងទីកន្លែងសិក្សាភាសាអង់គ្លេសយ៉ាងកក់ក្តៅមួយសម្រាប់អ្នកទាំងអស់គ្នា។
+            </div>
+          </div>    
+
+          <div class="about-visual" aria-hidden="true">
+            <div class="ring ring-3"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-1"></div>
+            <div class="dot-grid top-left">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="dot-grid middle-right">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="mini-badge top">
+              <img src="Logo.jpg" alt="" />
+            </div>
+            <div class="mini-badge bottom">
+              <img src="Logo.jpg" alt="" />
+            </div>
+            <div class="about-photo">
+              <img src="Logo.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses-section" id="courses">
+      <h2 class="courses-heading">ជ្រើសរើសវគ្គសិក្សារបស់គ្នាយើងនៅទីនេះ</h2>
+      <div class="courses-wrap">
+        <div class="card card-1">
+          <div class="card-icon-wrap"><i class="fa-solid fa-school"></i></div>
+          <div class="card-level khmer-text">កម្រិត ១ – ១០</div>
+          <h3>ថ្នាក់រៀនភាសាអង់គ្លេស​(ចំណេះដឹងទូទៅ)</h3>
+          <p>
+            វគ្គសិក្សាសម្រាប់គ្នាយើងដែលចង់ អភិវឌ្ឍភាសាអង់គ្លេស (ការនិយាយ ការស្ដាប់ ការអាន ការសរសេរ វេយ្យាករណ៍ និង ពាក្យគន្លឹះ)
+          </p>
+          <a class="btn btn-blue" href="https://forms.gle/cNN6YBGBbrDxUWWV8" target="_blank" rel="noopener">
+             ចុចទីនេះដើម្បីចុះឈ្មោះ
+          </a>
+        </div>
+
+        <div class="card card-2">
+          <div class="card-icon-wrap"><i class="fa-solid fa-book"></i></div>
+          <div class="card-level khmer-text">ត្រៀមប្រលងបាក់ឌុប</div>
+          <h3>ថ្នាក់រៀនភាសាអង់គ្លេស ត្រៀមប្រលង បាក់ឌុប</h3>
+          <p>
+            ត្រៀមខ្លួនប្រឡងបាក់ឌុប! ហាត់តេស្ដសាកល្បង វេយ្យាករណ៍ ការសរសេរ​​​ ពាក្យគន្លឹះ និង ការអាន ដើម្បី ទទួល បាន និទ្ទេស A, B, និង C!
+          </p>
+          <a class="btn btn-yellow" href="https://forms.gle/ed11YJbBbySCDXof9" target="_blank" rel="noopener">
+             ចុចទីនេះដើម្បីចុះឈ្មោះ
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="card card-2">
+          <h3>ទំនាក់ទំនង</h3>
+          <p>
+            បើមានចម្ងល់ ចុចទីនេះ ឬទាក់ទងមកតាម តេលេក្រាមលេខ: 010 752 678
+          </p>
+          <a class="btn btn-yellow" href="https://t.me/LET0007" target="_blank" rel="noopener">
+             ចុចទីនេះដើម្បីទាក់ទង
+          </a>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 L.E.T - Learn English Together</p>
+    </footer>
+  </div>
+</body>
+</html>
