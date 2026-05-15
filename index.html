@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: "Taprom";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("./fonts/Taprom.woff2") format("woff2");
+    }
+
     :root {
       --navy: #0b1638;
       --navy-deep: #060d24;
@@ -32,14 +40,15 @@
     }
 
     body {
-      font-family: "Nunito", sans-serif;
+      font-family: "Taprom", cursive;
       background: var(--navy-deep);
       color: var(--white);
       overflow-x: hidden;
     }
 
     .khmer-text {
-      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-family: "Taprom", cursive;
+      font-weight: 400;
     }
 
     .page {
@@ -74,15 +83,145 @@
       padding: 0 24px 90px;
     }
 
+    .contact-section {
+      padding: 0 24px 90px;
+    }
+
     .courses-heading {
       width: min(100%, 1480px);
       margin: 0 auto 24px;
       text-align: center;
-      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-family: "Noto Sans Khmer", "Leelawadee UI", "Khmer OS Siem Reap", sans-serif;
       font-size: clamp(1.5rem, 3vw, 2.3rem);
       color: var(--white);
       font-weight: 700;
       letter-spacing: 0.02em;
+    }
+
+    .contact-card {
+      width: min(100%, 1480px);
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--navy);
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 58, 207, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-copy,
+    .contact-panel {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #dfe8ff;
+      color: #2f57d8;
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .contact-title {
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.45;
+      margin-bottom: 12px;
+    }
+
+    .contact-text {
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      color: #64759c;
+      font-size: 1.05rem;
+      line-height: 1.95;
+      max-width: 640px;
+    }
+
+    .contact-panel {
+      background: linear-gradient(180deg, #f7f9ff 0%, #edf3ff 100%);
+      border: 1px solid #d9e3ff;
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .contact-item i {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #14296d, #091433);
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .contact-item strong,
+    .contact-item span {
+      display: block;
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+    }
+
+    .contact-item strong {
+      color: var(--navy);
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    .contact-item span {
+      color: #66779f;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      word-break: break-word;
+    }
+
+    .contact-btn {
+      width: 100%;
+      justify-content: center;
     }
 
     .courses-wrap {
@@ -152,7 +291,7 @@
     }
 
     .card h3 {
-      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
       color: var(--navy);
       font-size: clamp(1.8rem, 3vw, 2.3rem);
       line-height: 1.45;
@@ -160,7 +299,7 @@
     }
 
     .card p {
-      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
       color: #7484ab;
       font-size: 1.08rem;
       line-height: 1.95;
@@ -177,7 +316,7 @@
       min-height: 64px;
       padding: 14px 28px;
       border-radius: 999px;
-      font-family: "Khmer OS Siem Reap", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
+      font-family: "Taprom", "Noto Sans Khmer", "Leelawadee UI", sans-serif;
       font-size: 1.18rem;
       font-weight: 700;
       text-decoration: none;
@@ -360,7 +499,7 @@
     .about-khmer-body {
       color: #4d5c79;
       line-height: 2.1;
-      font-size: 1.26rem;
+      font-size: 1.1rem;
       max-width: 680px;
       background: linear-gradient(180deg, #f7f9ff 0%, #eef3ff 100%);
       border: 1px solid #d9e3ff;
@@ -534,6 +673,10 @@
         padding: 0 14px 50px;
       }
 
+      .contact-section {
+        padding: 0 14px 50px;
+      }
+
       .courses-heading {
         margin-bottom: 16px;
         font-size: 1.35rem;
@@ -542,6 +685,45 @@
       .about-card {
         padding: 18px 16px 24px;
         border-radius: 24px;
+      }
+
+      .contact-card {
+        grid-template-columns: 1fr;
+        padding: 22px 16px;
+        border-radius: 24px;
+        gap: 18px;
+      }
+
+      .contact-badge {
+        min-height: 38px;
+        padding: 7px 14px;
+        font-size: 0.88rem;
+        margin-bottom: 14px;
+      }
+
+      .contact-title {
+        font-size: clamp(1.45rem, 6.5vw, 2rem);
+      }
+
+      .contact-text {
+        font-size: 0.95rem;
+        line-height: 1.85;
+      }
+
+
+      .contact-panel {
+        padding: 16px;
+        border-radius: 20px;
+      }
+
+      .contact-item {
+        padding: 12px;
+        gap: 12px;
+      }
+
+      .contact-item i {
+        width: 38px;
+        height: 38px;
       }
 
       .about-topbar {
@@ -592,7 +774,7 @@
       }
 
       .about-khmer-body {
-        font-size: 0.98rem;
+        font-size: 0.8rem;
         line-height: 1.95;
         padding: 18px 16px;
         border-radius: 18px;
@@ -728,7 +910,7 @@
       }
 
       .about-khmer-body {
-        font-size: 0.92rem;
+        font-size: 0.8rem;
         line-height: 1.9;
         padding: 16px 14px;
       }
@@ -743,25 +925,41 @@
       }
 
       .card-level {
-        font-size: 0.68rem;
+        font-size: 0.6rem;
         padding: 5px 8px;
       }
 
       .card h3 {
-        font-size: 0.92rem;
+        font-size: 0.8rem;
       }
 
       .card p {
-        font-size: 0.72rem;
+        font-size: 0.64rem;
       }
 
       .btn {
         min-height: 40px;
-        font-size: 0.74rem;
+        font-size: 0.66rem;
       }
 
       .courses-heading {
         font-size: 1.12rem;
+      }
+
+      .contact-title {
+        font-size: 1.24rem;
+      }
+
+      .contact-text {
+        font-size: 0.9rem;
+      }
+
+      .contact-item strong {
+        font-size: 0.84rem;
+      }
+
+      .contact-item span {
+        font-size: 0.82rem;
       }
     }
   </style>
@@ -787,10 +985,9 @@
         <div class="about-layout">
           <div class="about-copy khmer-text">
             <h2 class="about-khmer-title">អំពីពួកយើង</h2>
-            <p class="about-khmer-meta">បើកពីឆ្នាំ 2024 - បច្ចុប្បន្ន និងបានធ្វើការជាមួយសិស្សសរុបជាង 500 នាក់  ។</p>
+            <p class="about-khmer-meta">ចាប់ផ្ដើមដំណើរការតាំងពីឆ្នាំ ២០២៤ រហូតដល់ បច្ចុប្បន្ន។ យើងបានធ្វើការជាមួយសិស្សសរុបជាង ៥០០ នាក់។</p>
             <div class="about-khmer-body">
-              យើងកំពុងជួយសិស្សក្នុងការអភិវឌ្ឍន៍ភាសាអង់គ្លេសរបស់ពួកគេក្នុងការនិយាយ , វេយ្យាករណ៍ និង ការបង្កើតប្រយោគ។ លើសពីនេះ យើងផ្តល់ទំនុកចិត្ត និងទីកន្លែងសិក្សាភាសាអង់គ្លេសយ៉ាងកក់ក្តៅមួយសម្រាប់អ្នកទាំងអស់គ្នា។
-            </div>
+              L.E.T. បាននឹងកំពុងជួយសិស្ស អភិវឌ្ឍន៍សមត្ថភាព និងទំនុកចិត្តក្នុងការប្រើប្រាស់ភាសាអង់គ្លេស របស់ពួកគេ ជាពិសេសក្នុងការនិយាយ វេយ្យាករណ៍ និងការបង្កើតប្រយោគ។ បន្ថែមពីនេះទៅទៀត សាលាអនឡាញរបស់យើង បានក្លាយខ្លួនទៅជាកន្លែងដ៏កក់ក្ដៅមួយដែលសិស្សអាចសិក្សាផង និងបង្កើតអនុស្សាវរីយ៍ ល្អៗជាមួយមិត្តរួមថ្នាក់ និង លោកគ្រូអ្នកគ្រូផង។            </div>
           </div>    
 
           <div class="about-visual" aria-hidden="true">
@@ -824,7 +1021,7 @@
     </section>
 
     <section class="courses-section" id="courses">
-      <h2 class="courses-heading">ជ្រើសរើសវគ្គសិក្សារបស់គ្នាយើងនៅទីនេះ</h2>
+      <h2 class="courses-heading">  ជ្រើសរើសវគ្គសិក្សារបស់គ្នាយើងនៅទីនេះ</h2>
       <div class="courses-wrap">
         <div class="card card-1">
           <div class="card-icon-wrap"><i class="fa-solid fa-school"></i></div>
@@ -852,15 +1049,44 @@
       </div>
     </section>
 
-    <div class="card card-2">
-          <h3>ទំនាក់ទំនង</h3>
-          <p>
-            បើមានចម្ងល់ ចុចទីនេះ ឬទាក់ទងមកតាម តេលេក្រាមលេខ: 010 752 678
+    <section class="contact-section" id="contact">
+      <div class="contact-card">
+        <div class="contact-copy">
+          <div class="contact-badge">
+            <i class="fa-solid fa-address-book"></i>
+            <span>ទំនាក់ទំនង</span>
+          </div>
+          <h2 class="contact-title">មានចម្ងល់ ឬចង់សួរបន្ថែម អាចទាក់ទងមកកាន់ពួកយើងបាន</h2>
+          <p class="contact-text">
+            ប្រសិនបើអ្នកចង់សួរព័ត៌មានបន្ថែមអំពីថ្នាក់រៀន កាលវិភាគ ឬការចុះឈ្មោះ គ្នាយើងអាចទាក់ទងមកកាន់ L.E.T បានយ៉ាងងាយស្រួលតាមរយៈវិធីសាស្រ្ត​ខាងក្រោម។
           </p>
-          <a class="btn btn-yellow" href="https://t.me/LET0007" target="_blank" rel="noopener">
-             ចុចទីនេះដើម្បីទាក់ទង
+        </div>
+
+        <div class="contact-panel">
+          <div class="contact-list">
+            <div class="contact-item">
+              <i class="fa-brands fa-telegram"></i>
+              <div>
+                <strong>Telegram</strong>
+                <span>@LET0007</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>លេខទូរស័ព្ទ</strong>
+                <span>010 752 678</span>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn btn-yellow contact-btn" href="https://t.me/LET0007" target="_blank" rel="noopener">
+            ចុចទីនេះដើម្បីទាក់ទង
           </a>
-    </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
       <p>&copy; 2026 L.E.T - Learn English Together</p>
